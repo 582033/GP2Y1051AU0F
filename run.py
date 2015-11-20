@@ -55,14 +55,15 @@ def show():
     Vout = get_vout(line)                           #输入电压
     #Vout = ((Vout_h * 256) + Vout_l) / 1024 * 5    #输入电压
     Dustdensity = int(A * Vout)                     #灰尘密度,单位 ug/m3
-    print "====================="
-    print "Vout:" + str(Vout) + "V"
-    print "DustDensity:" + str(Dustdensity) + "ug/m3"
-    time.sleep(1)
+    #print "===================="
+    #print "Vout:" + str(Vout) + "V"
+    #print "DustDensity: " + str(Dustdensity) + " ug/m3"
+    print "PM2.5: " + str(Dustdensity) + " ug/m3"
 
 try:
-    while 1:
+    #while 1:
         show()
+        ser.close()
 
 except KeyboardInterrupt:
     ser.close()
