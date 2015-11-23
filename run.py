@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import time,serial
+import time,sys,serial
 
 
 # configure the serial connections (the parameters differs on the device you are connecting to)
@@ -55,9 +55,11 @@ def show():
     Vout = get_vout(line)                           #输入电压
     #Vout = ((Vout_h * 256) + Vout_l) / 1024 * 5    #输入电压
     Dustdensity = int(A * Vout)                     #灰尘密度,单位 ug/m3
-    print "====================="
-    print "Vout:" + str(Vout) + "V"
-    print "DustDensity:" + str(Dustdensity) + "ug/m3"
+    #print "====================="
+    #print "Vout:" + str(Vout) + "V"
+    #DustDensity = "DustDensity:" + str(Dustdensity) + "ug/m3"
+    sys.stdout.write("Vout: %s V         DustDensity: %s ug/m3 \r" % (Vout, Dustdensity))
+    sys.stdout.flush()
     time.sleep(1)
 
 try:
