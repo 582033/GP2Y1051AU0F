@@ -44,6 +44,7 @@ def get_vout(hex_str):
     Vout_l = num_format(hex_str [Vout_l_index:Vout_l_index+2])
 
     Vout = ((Vout_h * 256) + Vout_l) / 1024 * 5     #输入电压
+    Vout = round(Vout, 3)
     return Vout
 
 def show():
@@ -58,7 +59,7 @@ def show():
     #print "====================="
     #print "Vout:" + str(Vout) + "V"
     #DustDensity = "DustDensity:" + str(Dustdensity) + "ug/m3"
-    sys.stdout.write("Vout: %s V         DustDensity: %s ug/m3 \r" % (Vout, Dustdensity))
+    sys.stdout.write("[  Vout: %s V     |    DustDensity: %s ug/m3  ] \r" % (Vout, Dustdensity))
     sys.stdout.flush()
     time.sleep(1)
 
