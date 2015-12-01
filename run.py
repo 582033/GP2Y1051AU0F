@@ -59,7 +59,7 @@ def show():
     #print "====================="
     #print "Vout:" + str(Vout) + "V"
     #DustDensity = "DustDensity:" + str(Dustdensity) + "ug/m3"
-    sys.stdout.write("[  Vout: %s V     |    DustDensity: %s ug/m3  ] \r" % (Vout, Dustdensity))
+    sys.stdout.write("[  Vout: %s V     |    DustDensity: %s ug/m3 ] \r" % (Vout, Dustdensity))
     sys.stdout.flush()
     time.sleep(1)
 
