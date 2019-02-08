@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import time
 import sys
-import serial
 
 class AIRQ():
     def __init__(self, ser):
@@ -49,7 +48,9 @@ class AIRQ():
         line = byteData.encode('hex')
         return line
 
-    def get_density(slef, Vout):
+    def get_density(self):
+        line = self.get_serial_data()
+        Vout = self.get_vout(line)
         A = 550
 
         #灰尘密度,单位 ug/m3
@@ -58,11 +59,8 @@ class AIRQ():
 
     def show(self):
 
-        line = self.get_serial_data()
-
-        Vout = self.get_vout(line)
         #Vout = ((Vout_h * 256) + Vout_l) / 1024 * 5    #输入电压
-        DustDensity = self.get_density(Vout)
+        DustDensity = self.get_density()
         #print "====================="
         #print "Vout:" + str(Vout) + "V"
         #DustDensity = "DustDensity:" + str(Dustdensity) + "ug/m3"
