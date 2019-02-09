@@ -19,9 +19,9 @@ ser = serial.Serial(
 )
 
 app = Flask(__name__)
-exporter_value = Gauge("dust_density", "Dust density of the request")
+exporter_value = Gauge("dust_density", "Export the dust density value of GP2Y1051AU0F")
 @app.route("/metrics")
-def r_value():
+def export_metrics():
     aq = airq.AIRQ(ser)
     dust_density = aq.get_density()
     exporter_value.set(dust_density)
